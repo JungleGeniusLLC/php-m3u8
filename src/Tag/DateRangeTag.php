@@ -306,41 +306,41 @@ class DateRangeTag extends AbstractTag
             switch ($prop) {
                 case 'id':
                     $attrs[] = sprintf('%s="%s"', 'ID', $value);
-                    continue;
+                    break;
                 case 'class':
                     $attrs[] = sprintf('%s="%s"', 'CLASS', $value);
-                    continue;
+                    break;
                 case 'startdate':
                     $time_zone = $value->format('P');
                     $start_date = sprintf('%s%s', substr($value->format('Y-m-d\TH:i:s.u'), 0, -3), $time_zone);
                     $attrs[] = sprintf('%s="%s"', 'START-DATE', $start_date);
-                    continue;
+                    break;
                 case 'enddate':
                     $time_zone = $value->format('P');
                     $end_date = sprintf('%s%s', substr($value->format('Y-m-d\TH:i:s.u'), 0, -3), $time_zone);
                     $attrs[] = sprintf('%s="%s"', 'END-DATE', $end_date);
-                    continue;
+                    break;
                 case 'duration':
                     $attrs[] = sprintf('%s=%s', 'DURATION', $value);
-                    continue;
+                    break;
                 case 'plannedduration':
                     $attrs[] = sprintf('%s=%s', 'PLANNED-DURATION', $value);
-                    continue;
+                    break;
                 case 'scte35cmd':
                     $attrs[] = sprintf('%s=%s', 'SCTE35-CMD', $value);
-                    continue;
+                    break;
                 case 'scte35out':
                     $attrs[] = sprintf('%s=%s', 'SCTE35-OUT', $value);
-                    continue;
+                    break;
                 case 'scte35in':
                     $attrs[] = sprintf('%s=%s', 'SCTE35-IN', $value);
-                    continue;
+                    break;
                 case 'endonnext':
                     $attrs[] = sprintf('%s=%s', 'END-ON-NEXT', $value);
-                    continue;
+                    break;
                 case 'xuuid':
                     $attrs[] = sprintf('%s="%s"', 'X-UUID', $value);
-                    continue;
+                    break;
             }
 
         }
@@ -361,37 +361,37 @@ class DateRangeTag extends AbstractTag
             switch ($prop) {
                 case 'ID':
                     $this->id = trim($value, '"');
-                    continue;
+                    break;
                 case 'CLASS':
                     $this->class = trim($value, '"');
-                    continue;
+                    break;
                 case 'START-DATE':
                     $this->startdate = new \DateTime(trim($value, '"'));
-                    continue;
+                    break;
                 case 'END-DATE':
                     $this->enddate = new \DateTime(trim($value, '"'));
-                    continue;
+                    break;
                 case 'DURATION':
                     $this->duration = $value;
-                    continue;
+                    break;
                 case 'PLANNED-DURATION':
                     $this->plannedduration = $value;
-                    continue;
+                    break;
                 case 'SCTE35-CMD':
                     $this->scte35cmd = $value;
-                    continue;
+                    break;
                 case 'SCTE35-OUT':
                     $this->scte35out = $value;
-                    continue;
+                    break;
                 case 'SCTE35-IN':
                     $this->scte35in = $value;
-                    continue;
+                    break;
                 case 'END-ON-NEXT':
                     $this->endonnext = $value;
-                    continue;
+                    break;
                 case 'X-UUID':
                     $this->xuuid = trim($value, '"');
-                    continue;
+                    break;
             }
 
         }
