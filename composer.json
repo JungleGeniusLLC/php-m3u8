@@ -1,0 +1,35 @@
+{
+    "name": "chrisyue/php-m3u8",
+    "description": "PHP M3U8 parser / dumper",
+    "homepage": "http://chrisyue.com",
+    "type": "library",
+    "authors": [{
+        "name": "chrisyue",
+        "email": "blizzchris@gmail.com",
+        "homepage": "http://chrisyue.com"
+    }],
+    "keywords": [
+        "m3u8"
+    ],
+    "license": [
+        "MIT"
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "sllh/php-cs-fixer-styleci-bridge": "^2.1",
+        "friendsofphp/php-cs-fixer": "^1.13",
+        "phpunit/phpunit": "^4.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Chrisyue\\PhpM3u8\\" : "src"
+        }
+    },
+    "extra": {
+        "branch-alias" : {
+            "dev-master" : "2.1.x-dev"
+        }
+    }
+}
