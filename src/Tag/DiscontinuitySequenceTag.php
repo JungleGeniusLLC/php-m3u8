@@ -33,6 +33,9 @@ class DiscontinuitySequenceTag extends AbstractTag
 
     public function dump()
     {
+        if (is_null($this->discontinuitySequence)) {
+            return;
+        }
         if (empty($this->discontinuitySequence) && $this->discontinuitySequence !== '0') {
             return;
         }

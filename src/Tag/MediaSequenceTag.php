@@ -33,6 +33,9 @@ class MediaSequenceTag extends AbstractTag
 
     public function dump()
     {
+        if (is_null($this->mediaSequence)) {
+            return;
+        }
         if (empty($this->mediaSequence) && $this->mediaSequence !== '0') {
             return;
         }
