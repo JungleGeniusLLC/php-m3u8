@@ -15,7 +15,12 @@ class Segment extends AbstractContainer
 {
     private $extinfTag;
     private $byteRangeTag;
+    private $cueoutTag;
     private $discontinuityTag;
+    private $programDateTimeTag;
+    private $dateRangeTag;
+    private $cueinTag;
+    private $streamTags;
     private $keyTags;
     private $uri;
 
@@ -26,7 +31,12 @@ class Segment extends AbstractContainer
     {
         $this->extinfTag = new Tag\ExtinfTag($m3u8Version);
         $this->byteRangeTag = new Tag\ByteRangeTag();
+        $this->cueoutTag = new Tag\CueOutTag();
         $this->discontinuityTag = new Tag\DiscontinuityTag();
+        $this->programDateTimeTag = new Tag\ProgramDateTimeTag();
+        $this->dateRangeTag = new Tag\DateRangeTag();
+        $this->cueinTag = new Tag\CueInTag();
+        $this->streamTags = new StreamTags();
         $this->keyTags = new KeyTags();
         $this->uri = new Uri();
     }
@@ -74,6 +84,58 @@ class Segment extends AbstractContainer
     }
 
     /**
+     * @return Chrisyue\PhpM3u8\Tag\ProgramDateTimeTag
+     */
+    public function getProgramDateTimeTag()
+    {
+        return $this->programDateTimeTag;
+    }
+
+    public function isProgramDateTime()
+    {
+        return $this->programDateTimeTag->isProgramDateTime();
+    }
+
+    /**
+     * @return Chrisyue\PhpM3u8\Tag\DateRangeTag
+     */
+    public function getDateRangeTag()
+    {
+        return $this->dateRangeTag;
+    }
+
+    public function isDateRange()
+    {
+        return $this->dateRangeTag->isDateRange();
+    }
+
+    /**
+     * @return Chrisyue\PhpM3u8\Tag\CueOutTag
+     */
+    public function getCueOutTag()
+    {
+        return $this->cueoutTag;
+    }
+
+    public function isCueOut()
+    {
+        return $this->cueoutTag->isCueOut();
+    }
+
+    /**
+     * @return Chrisyue\PhpM3u8\Tag\CueInTag
+     */
+    public function getCueInTag()
+    {
+        return $this->cueinTag;
+    }
+
+    public function isCueIn()
+    {
+        return $this->cueinTag->isCueIn();
+    }
+
+    /**
      * @return Chrisyue\PhpM3u8\Tag\ExtinfTag
      */
     public function getExtinfTag()
@@ -95,6 +157,14 @@ class Segment extends AbstractContainer
     }
 
     /**
+     * @return Chrisyue\PhpM3u8\StreamTags
+     */
+    public function getStreamTags()
+    {
+        return $this->streamTags;
+    }
+
+    /**
      * @return Chrisyue\PhpM3u8\KeyTags
      */
     public function getKeyTags()
@@ -113,10 +183,15 @@ class Segment extends AbstractContainer
     protected function getComponents()
     {
         return [
+            $this->streamTags,
             $this->keyTags,
+            $this->programDateTimeTag,
+            $this->dateRangeTag,
             $this->extinfTag,
             $this->byteRangeTag,
+            $this->cueoutTag,
             $this->discontinuityTag,
+            $this->cueinTag,
             $this->uri,
         ];
     }

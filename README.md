@@ -79,18 +79,20 @@ According to [HLS draft version 23](https://tools.ietf.org/html/draft-pantos-htt
     - [x] EXT-X-DISCONTINUITY
     - [x] EXT-X-KEY
     - [ ] EXT-X-MAP
-    - [ ] EXT-X-PROGRAM-DATE-TIME
-    - [ ] EXT-X-DATERANGE
+    - [x] EXT-X-PROGRAM-DATE-TIME
+    - [x] EXT-X-DATERANGE
+    - [x] EXT-X-CUE-OUT
+    - [x] EXT-X-CUE-IN
 * Media Playlist Tags
     - [x] EXT-X-TARGETDURATION
     - [x] EXT-X-MEDIA-SEQUENCE
     - [x] EXT-X-DISCONTINUITY-SEQUENCE
     - [x] EXT-X-ENDLIST
-    - [ ] EXT-X-PLAYLIST-TYPE
+    - [x] EXT-X-PLAYLIST-TYPE
     - [ ] EXT-X-I-FRAMES-ONLY
 * Master Playlist Tags
     - [ ] EXT-X-MEDIA
-    - [ ] EXT-X-STREAM-INF
+    - [x] EXT-X-STREAM-INF
     - [ ] EXT-X-I-FRAME-STREAM-INF
     - [ ] EXT-X-SESSION-DATA
     - [ ] EXT-X-SESSION-KEY
