@@ -78,7 +78,7 @@ According to [HLS draft version 23](https://tools.ietf.org/html/draft-pantos-htt
     - [x] EXT-X-BYTERANGE
     - [x] EXT-X-DISCONTINUITY
     - [x] EXT-X-KEY
-    - [ ] EXT-X-MAP
+    - [x] EXT-X-MAP
     - [x] EXT-X-PROGRAM-DATE-TIME
     - [x] EXT-X-DATERANGE
     - [x] EXT-X-CUE-OUT

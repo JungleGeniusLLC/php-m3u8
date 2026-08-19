@@ -37,8 +37,14 @@ class DummyM3u8Factory
         $segment->getKeyTags()->add($keyTag);
 
         $segment->getExtinfTag()->setDuration(12)->setTitle('hello world');
-        $segment->getByteRangeTag()->setLength(10000)->setOffset(100);
-        $segment->getUri()->setUri('stream33.ts');
+        if ($version == 6) {
+            $segment->getMapTag()->setUri('init.mp4')->setByteRange('10000@100');
+            $segment->getByteRangeTag()->setLength(20000)->setOffset(200);
+            $segment->getUri()->setUri('stream33.m4s');
+        }else{
+            $segment->getByteRangeTag()->setLength(10000)->setOffset(100);
+            $segment->getUri()->setUri('stream33.ts');
+        }
         $m3u8->getSegments()->add($segment);
 
         $segment = new Segment($version);
@@ -52,8 +58,27 @@ class DummyM3u8Factory
 
     public static function createM3u8Content($version = 3)
     {
-        if ($version < 3) {
+        if ($version == 6) {
             return <<<'M3U8'
+#EXTM3U
+#EXT-X-VERSION:6
+#EXT-X-TARGETDURATION:12
+#EXT-X-MEDIA-SEQUENCE:33
+#EXT-X-DISCONTINUITY-SEQUENCE:3
+#EXT-X-KEY:METHOD=AES-128,URI="key",IV=0xF85A5066CCB442181ACACA2E862A34DC
+#EXT-X-KEY:METHOD=SAMPLE-AES,URI="key2",IV=0xF85A5066CCB442181ACACA2E862A34DC,KEYFORMAT="com.apple",KEYFORMATVERSIONS="1"
+#EXT-X-MAP:URI="init.mp4",BYTERANGE="10000@100"
+#EXTINF:12.000,hello world
+#EXT-X-BYTERANGE:20000@200
+stream33.m4s
+#EXTINF:10.000,
+#EXT-X-DISCONTINUITY
+video01.ts
+M3U8;
+        }
+
+    if ($version < 3) {
+        return <<<'M3U8'
 #EXTM3U
 #EXT-X-VERSION:2
 #EXT-X-TARGETDURATION:12
