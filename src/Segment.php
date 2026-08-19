@@ -22,6 +22,7 @@ class Segment extends AbstractContainer
     private $cueinTag;
     private $streamTags;
     private $keyTags;
+    private $mapTag;
     private $uri;
 
     private $mediaSequence;
@@ -38,6 +39,7 @@ class Segment extends AbstractContainer
         $this->cueinTag = new Tag\CueInTag();
         $this->streamTags = new StreamTags();
         $this->keyTags = new KeyTags();
+        $this->mapTag = new Tag\MapTag();
         $this->uri = new Uri();
     }
 
@@ -173,6 +175,14 @@ class Segment extends AbstractContainer
     }
 
     /**
+     * @return Chrisyue\PhpM3u8\MapTag
+     */
+    public function getMapTag()
+    {
+        return $this->mapTag;
+    }
+
+    /**
      * @return bool
      */
     public function isEmpty()
@@ -185,6 +195,7 @@ class Segment extends AbstractContainer
         return [
             $this->streamTags,
             $this->keyTags,
+            $this->mapTag,
             $this->programDateTimeTag,
             $this->dateRangeTag,
             $this->extinfTag,

@@ -52,4 +52,11 @@ class M3u8Test extends TestCase
 
         $this->assertEquals(DummyM3u8Factory::createM3u8Content(3), $m3u8->dump());
     }
+
+    public function testDump6()
+    {
+        $m3u8 = DummyM3u8Factory::createM3u8(6);
+
+        $this->assertEquals(DummyM3u8Factory::createM3u8Content(6), $m3u8->dump());
+    }
 }
