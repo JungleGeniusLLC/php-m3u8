@@ -23,8 +23,8 @@ trait AttributesValueTagTrait
 
         $attributes = [];
         foreach ($attrs as $attr) {
-            list($key, $value) = explode('=', $attr);
-            $attributes[$key] = trim($value);
+            list($key, $value) = explode('=', trim($attr), 2);
+            $attributes[trim($key)] = trim($value);
         }
 
         return $attributes;

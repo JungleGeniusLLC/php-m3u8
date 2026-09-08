@@ -39,6 +39,7 @@ class M3u8 extends AbstractContainer
         $lines = self::split($string);
 
         $this->readLines($lines);
+        if (null === $this->endlistTag->isEndless()) $this->endlistTag->setEndless(true);
     }
 
     public function getVersionTag()

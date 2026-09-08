@@ -13,6 +13,7 @@ namespace Chrisyue\PhpM3u8\Tag;
 
 class CueOutTag extends AbstractTag
 {
+    use SingleValueTagTrait;
     private $cueout;
 
     const TAG_IDENTIFIER = '#EXT-X-CUE-OUT';
