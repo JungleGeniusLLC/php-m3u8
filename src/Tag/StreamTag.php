@@ -38,6 +38,31 @@ class StreamTag extends AbstractTag
     private $codecs;
 
     /**
+     * @var string
+     */
+    private $frameRate;
+
+    /**
+     * @var string
+     */
+    private $audio;
+
+    /**
+     * @var string
+     */
+    private $video;
+
+    /**
+     * @var string
+     */
+    private $subtitles;
+
+    /**
+     * @var string
+     */
+    private $closedCaptions;
+
+    /**
      * @param string
      *
      * @return self
@@ -117,6 +142,106 @@ class StreamTag extends AbstractTag
         return $this->codecs;
     }
 
+    /**
+     * @param string
+     *
+     * @return self
+     */
+    public function setFrameRate($frameRate)
+    {
+        $this->frameRate = $frameRate;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFrameRate()
+    {
+        return $this->frameRate;
+    }
+
+    /**
+     * @param string
+     *
+     * @return self
+     */
+    public function setAudio($audio)
+    {
+        $this->audio = $audio;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAudio()
+    {
+        return $this->audio;
+    }
+
+    /**
+     * @param string
+     *
+     * @return self
+     */
+    public function setVideo($video)
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
+    /**
+     * @param string
+     *
+     * @return self
+     */
+    public function setSubtitles($subtitles)
+    {
+        $this->subtitles = $subtitles;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSubtitles()
+    {
+        return $this->subtitles;
+    }
+
+    /**
+     * @param string
+     *
+     * @return self
+     */
+    public function setClosedCaptions($closedCaptions)
+    {
+        $this->closedCaptions = $closedCaptions;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getClosedCaptions()
+    {
+        return $this->closedCaptions;
+    }
+
     public function dump()
     {
         $attrs = [];
@@ -125,13 +250,27 @@ class StreamTag extends AbstractTag
                 continue;
             }
 
-            if ('codecs' === $prop) {
+            if ('codecs' === $prop || 'audio' === $prop || 'video' === $prop || 'subtitles' === $prop) {
                 $attrs[] = sprintf('%s="%s"', strtoupper($prop), $value);
                 continue;
             }
 
             if ('programId' === $prop) {
                 $attrs[] = sprintf('%s=%s', 'PROGRAM-ID', $value);
+                continue;
+            }
+
+            if ('frameRate' === $prop) {
+                $attrs[] = sprintf('%s=%s', 'FRAME-RATE', $value);
+                continue;
+            }
+
+            if ('closedCaptions' === $prop) {
+                if ('NONE' === strtoupper($value)) {
+                    $attrs[] = sprintf('%s=%s', 'CLOSED-CAPTIONS', 'NONE');
+                } else {
+                    $attrs[] = sprintf('%s="%s"', 'CLOSED-CAPTIONS', $value);
+                }
                 continue;
             }
 
@@ -156,8 +295,14 @@ class StreamTag extends AbstractTag
 
         foreach (get_object_vars($this) as $prop => $value) {
             $key = strtoupper($prop);
+            if ('frameRate' === $prop) {
+                $key = 'FRAME-RATE';
+            } elseif ('closedCaptions' === $prop) {
+                $key = 'CLOSED-CAPTIONS';
+            }
+
             if (isset($attributes[$key])) {
-                if ('codecs' === $prop) {
+                if ('codecs' === $prop || 'audio' === $prop || 'video' === $prop || 'subtitles' === $prop || 'closedCaptions' === $prop) {
                     $this->$prop = trim($attributes[$key], '",');
                     continue;
                 }

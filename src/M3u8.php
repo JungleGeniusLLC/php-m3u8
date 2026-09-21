@@ -20,6 +20,7 @@ class M3u8 extends AbstractContainer
     private $mediaSequenceTag;
     private $discontinuitySequenceTag;
     private $segments;
+    private $mediaTags;
     private $endlistTag;
 
     public function __construct()
@@ -31,6 +32,7 @@ class M3u8 extends AbstractContainer
         $this->mediaSequenceTag = new Tag\MediaSequenceTag();
         $this->discontinuitySequenceTag = new Tag\DiscontinuitySequenceTag();
         $this->segments = new Segments($this);
+        $this->mediaTags = new MediaTags();
         $this->endlistTag = new Tag\EndlistTag();
     }
 
@@ -100,6 +102,14 @@ class M3u8 extends AbstractContainer
         return $this->segments;
     }
 
+    /**
+     * @return Chrisyue\PhpM3u8\MediaTags
+     */
+    public function getMediaTags()
+    {
+        return $this->mediaTags;
+    }
+
     public function getEndlistTag()
     {
         return $this->endlistTag;
@@ -125,6 +135,7 @@ class M3u8 extends AbstractContainer
             $this->mediaSequenceTag,
             $this->discontinuitySequenceTag,
             $this->segments,
+            $this->mediaTags,
             $this->endlistTag,
         ];
     }
