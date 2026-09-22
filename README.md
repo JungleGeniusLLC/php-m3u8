@@ -91,7 +91,7 @@ According to [HLS draft version 23](https://tools.ietf.org/html/draft-pantos-htt
     - [x] EXT-X-PLAYLIST-TYPE
     - [ ] EXT-X-I-FRAMES-ONLY
 * Master Playlist Tags
-    - [ ] EXT-X-MEDIA
+    - [x] EXT-X-MEDIA
     - [x] EXT-X-STREAM-INF
     - [ ] EXT-X-I-FRAME-STREAM-INF
     - [ ] EXT-X-SESSION-DATA
